@@ -1,5 +1,6 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
+import Moment from 'react-moment';
 import './styles.css';
 
 class FormularioBusqueda extends React.Component {
@@ -52,6 +53,7 @@ class ItemResultado extends React.Component {
     render() {
         const resultado = this.props.resultado;
         return <li className="resultado">
+            <div className="resultado-content">
             <h3>
                 <a href={resultado.html_url} >
                     {resultado.name}
@@ -63,7 +65,8 @@ class ItemResultado extends React.Component {
                 </span>}
             </p>
             <p className="resultado-descripcion">{resultado.description}</p>
-            <p className="resultado-actualizado"> Actualizado {resultado.updated_at}</p>
+            <p className="resultado-actualizado"> Actualizado <Moment date={resultado.updated_at} /></p>
+            </div>
             <div className="resultado-stats">
                 <span className="resultado-stat">
                     {resultado.language}
@@ -72,10 +75,10 @@ class ItemResultado extends React.Component {
                     <i className="fa fa-code-fork"/>{resultado.forks_count}
                 </span>
                 <span className="resultado-stat">
-                    <i className="fa fa-start"/>{resultado.stargazers_count}
+                    <i className="fa fa-star"/>{resultado.stargazers_count}
                 </span>
                 <span className="resultado-stat">
-                    <i className="fa fa-aye"/>{resultado.watchers_count}
+                    <i className="fa fa-eye"/>{resultado.watchers_count}
                 </span>
             </div>
         </li>;
